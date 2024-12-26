@@ -1,10 +1,15 @@
 package day01
 
 class InputListParser {
-    fun parse(arrayOf: Array<String>): Pair<List<Int>, List<Int>> {
+    fun parse(input: Array<String>): Pair<List<Int>, List<Int>> {
+        val pairs = input.map {
+            val (left, right) = it.split("   ")
+            left to right
+        }
+
         return Pair(
-            listOf(1, 2, 3, 3, 3, 4),
-            listOf(3, 3, 3, 4, 5, 9),
+            pairs.map { it.first.toInt() }.sorted(),
+            pairs.map { it.second.toInt() }.sorted(),
         )
     }
 }
